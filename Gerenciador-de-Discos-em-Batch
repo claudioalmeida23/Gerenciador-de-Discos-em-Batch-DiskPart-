@@ -1,0 +1,131 @@
+@echo off
+title Gerenciador de Discos - DiskPart
+color 0A
+
+:: =========================================
+:: GERENCIADOR DE DISCOS - DISKPART
+:: Criador: Claudio Almeida
+:: Criado para listar, limpar e formatar
+:: =========================================
+
+:menu
+cls
+echo.
+echo   /$$$$$$                                          /$$
+echo  /$$__  $$                                        ^| $$
+echo ^| $$  \ $$ /$$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$ ^| $$   /$$
+echo ^| $$$$$$$$^| $$__  $$ ^|____  $$ /$$__  $$ /$$__  $$^| $$  /$$/
+echo ^| $$__  $$^| $$  \ $$  /$$$$$$$^| $$  \__/^| $$  \ $$^| $$$$$$/
+echo ^| $$  ^| $$^| $$  ^| $$ /$$__  $$^| $$      ^| $$  ^| $$^| $$_  $$
+echo ^| $$  ^| $$^| $$  ^| $$^|  $$$$$$$^| $$      ^|  $$$$$$/^| $$ \  $$
+echo ^|__/  ^|__/^|__/  ^|__/ \_______/^|__/       \______/ ^|__/  \__/
+echo.
+echo =========================================
+echo   GERENCIADOR DE DISCOS - DISKPART
+echo =========================================
+echo 1 - Listar discos
+echo 2 - Listar volumes
+echo 3 - Limpar disco (APAGA TUDO)
+echo 4 - Criar particao + formatar NTFS
+echo 5 - Criar particao + formatar FAT32
+echo 6 - Criar particao + formatar exFAT
+echo 0 - Sair
+echo =========================================
+set /p opcao=Escolha uma opcao: 
+
+if "%opcao%"=="1" goto listdisk
+if "%opcao%"=="2" goto listvolume
+if "%opcao%"=="3" goto cleandisk
+if "%opcao%"=="4" goto ntfs
+if "%opcao%"=="5" goto fat32
+if "%opcao%"=="6" goto exfat
+if "%opcao%"=="0" exit
+goto menu
+
+:: =========================================
+:listdisk
+cls
+echo list disk > diskpart.txt
+diskpart /s diskpart.txt
+del diskpart.txt
+pause
+goto menu
+
+:: =========================================
+:listvolume
+cls
+echo list volume > diskpart.txt
+diskpart /s diskpart.txt
+del diskpart.txt
+pause
+goto menu
+
+:: =========================================
+:cleandisk
+cls
+echo ATENCAO: ESTA ACAO APAGARA TODOS OS DADOS!
+set /p disco=Digite o NUMERO do disco: 
+
+(
+echo select disk %disco%
+echo clean
+) > diskpart.txt
+
+diskpart /s diskpart.txt
+del diskpart.txt
+pause
+goto menu
+
+:: =========================================
+:ntfs
+cls
+set /p disco=Digite o NUMERO do disco: 
+
+(
+echo select disk %disco%
+echo clean
+echo create partition primary
+echo format fs=ntfs quick label=DISCO_NTFS
+echo assign
+) > diskpart.txt
+
+diskpart /s diskpart.txt
+del diskpart.txt
+pause
+goto menu
+
+:: =========================================
+:fat32
+cls
+set /p disco=Digite o NUMERO do disco: 
+
+(
+echo select disk %disco%
+echo clean
+echo create partition primary
+echo format fs=fat32 quick label=DISCO_FAT32
+echo assign
+) > diskpart.txt
+
+diskpart /s diskpart.txt
+del diskpart.txt
+pause
+goto menu
+
+:: =========================================
+:exfat
+cls
+set /p disco=Digite o NUMERO do disco: 
+
+(
+echo select disk %disco%
+echo clean
+echo create partition primary
+echo format fs=exfat quick label=DISCO_EXFAT
+echo assign
+) > diskpart.txt
+
+diskpart /s diskpart.txt
+del diskpart.txt
+pause
+goto menu
