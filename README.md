@@ -27,10 +27,3 @@ Indicada para manutenção técnica, formatação de pendrives e discos externos
 - Executar como **Administrador**
 - Conhecimento básico sobre discos e partições
 
----
-
-## 🚀 Como usar
-
-1. Faça o download ou clone este repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/gerenciador-disco-bat.git
