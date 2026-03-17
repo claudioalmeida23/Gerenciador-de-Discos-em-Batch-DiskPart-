@@ -1,13 +1,13 @@
-# 🧰 Gerenciador de Discos em Batch (DiskPart)
+# Gerenciador de Discos em Batch (DiskPart)
 
 Ferramenta em **Batch (.BAT)** para **listar, limpar, particionar e formatar discos** no Windows utilizando o **DiskPart**.  
 Indicada para manutenção técnica, formatação de pendrives e discos externos.
 
-⚠️ **ATENÇÃO:** Este script pode apagar dados de forma irreversível. Use com extremo cuidado.
+ **ATENÇÃO:** Este script pode apagar dados de forma irreversível. Use com extremo cuidado.
 
 ---
 
-## 📌 Funcionalidades
+##  Funcionalidades
 
 - Listar discos disponíveis no sistema
 - Listar volumes
